@@ -1,0 +1,75 @@
+# Single line comments
+
+"""Multi line comments"""
+
+-> Mulit-line string, new line in string is new line in o/p
+>>> s = """ This also means a multi-line string
+... when assigned to variable"""
+>>> print (s)
+ This also means a multi-line string
+when assigned to variable
+
+-> Multi-line string/command, continue line char '\' is string is NOT new line in o/p
+>>> s = "This is a multi line command \
+... that goes to next line"
+>>> print (s)
+This is a multi line command that goes to next line
+
+Raw String:
+print (r"This string will ignore escape sequence \n like this one")
+eg.>>> print (r"New lines are \n")
+New lines are \n
+
+-> Strings are immutable, cannot be changed.
+Elements of string can be accessed like list
+>>> fruit = "Banana"
+>>> print (fruit[0])
+B
+>>> print (fruit[2:3])
+n
+>>> "a" in fruit
+True
+>>> "i" in fruit
+False
+>>> a = "X" *3
+>>> print (a)
+XXX
+>>> small_fruit = fruit.lower()
+>>> small_fruit
+'banana'
+>>> large_fruit = fruit.upper()
+>>> large_fruit
+'BANANA'
+>>> normal_fruit = fruit.capitalize()
+>>> normal_fruit
+'Banana'
+>>> fruit #remains unchanged, string is immutable
+'Banana'
+>>>
+
+-> Some more useful, string exclusive functions
+>>> fruit.find("a")             #finds index of 1st occurance of char or str
+1
+>>> fruit.find("a",3)           #finds index of pattern, starting from index position 3
+3
+>>> line = " This is a test line "
+>>> line.strip()                #strips the whitespaces(new_line,tab,space) from start and end of str
+'This is a test line'
+>>> fruit.startswith("a")       #True or False based on whether string starts with the pattern or not
+False
+
+-> Determine and change contents of string.
+string.isalnum()                #False for special chars
+
+string.isalpha(), string.isdigit(), string.isupper(), string.islower()
+
+-> String alignment
+>>> width = 20
+>>> print 'HackerRank'.ljust(width,'-')
+HackerRank----------
+
+>>> print 'HackerRank'.center(width,'-')
+-----HackerRank-----
+
+>>> print 'HackerRank'.rjust(width,'-')
+----------HackerRank

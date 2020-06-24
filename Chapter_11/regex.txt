@@ -1,0 +1,66 @@
+Notes
+#https://www.youtube.com/watch?v=K8L6KVGG-7o
+
+import re
+
+==> re.search("pattern","search_string")
+-> returns True/False
+-> stops matching after finding the 1st occurance, returns None for no-match
+
+==> store_matches = re.findall("pattern","search_string")
+-> finds all occrances of the pattern in the string, and returns a list of matches
+
+==> search_pattern = re.compile("pattern")
+-> compiles the search pattern in the variable search_string to be used to find pattern
+
+==> store_matches = search_pattern.finditer("search_string")
+-> similar to findall, stores list of matches in store_matches, also returns index of each match
+
+==> Search + Extract
+-> put the pattern to extract in round bracket, within the search pattern
+eg. X-DSPAM-Confidence: 0.8475 match this line but extract the value only ([0-9]+)
+-> Can be used with findall/pattern.finditer(), for more than one group extracts results in list
+-> value_string = re.findall("^X.+([0-9]+)",line)
+-> value_string[n] will give nth group match, n>0, or none
+
+==> Substitution
+new_string = search_patter.sub(r"\2\3",search_string)
+-> new_string will have group2 and group3 from the vaule_string, without having to store anywhere
+
+==> escape sequence to match exact char
+-> \^ will match ^ exact, instead of start
+eg. result = re.findall("\^")
+
+==> r"string" will match the sequence, as raw string
+-> eg. s = (r"\n") is not a new line but exact match of ''\n'
+
+==> everything indside square bracket is exact match
+-> eg. [0-9.*] here . and * are exact characters and not meta-chars.
+
+==> re.match(x,y) looks for x at the beginning of string, as ^x
+
+==> finditer returns metadata about match, along with match. findall only returns the match result
+
+==> Flags
+-> re.compile(r"start",re.IGNORECASE) can match 'start' or 'START', can be used as re.I
+
+==> Metacharacters
+.  Any character, except new line
++  1 or more of left char
+*  0 or more of left char
+?  0 or 1 of left char
+{} exact count of left char eg.[0-9]{3}, {3,5} is range {min,max}
+[] Char set, matches exact one char from set, meta char are exact case in []
+[^] Not Char set
+\  escape sequence
+|  OR logical
+() group of word(s) eg. "M(r|s|rs)" will match Mr, Ms, Mrs
+\d Match any digit
+\D Match any, except digit
+\s Match whitespace
+\S Match all except whitespace
+\w Match word char a-zA-Z0-9_
+\W Match opposite of word
+\b Word boundary, pattern that is at the start of the word
+\B Not word boundary, patter that is Not at start of word
+(?<= ) and (?= ) looks ahead and look behind for space, " && && " there is only one space in between two &&s so if one matches other won't, this can be overcome with the pattern  (?<= )&&(?= )

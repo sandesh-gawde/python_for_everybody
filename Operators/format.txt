@@ -1,0 +1,59 @@
+Format Operator
+
+Syntax: print("Print the text with {0} and {1}".format("words","sentences"))
+
+-> {} correspond to respect value in .format()
+-> Numbers are optional, but if same # is used, it will correspond to the value at that index
+    eg. {0} {0} will correspond to 0th index of .format(0th,1st)
+
+-> {name} {age}, variables can be used in the operator and value be assinged to it
+    eg. >>> print("{name} is my name, and my age is {age}".format(name="Sandesh",age=25))
+        Sandesh is my name, and my age is 25
+-> This will also convert int, float etc to str in the print, eg. age=25
+
+Eg:
+>>> print ("This is a string of {0} words and {1} sentences".format(12,2))
+This is a string of 12 words and 2 sentences
+>>> print ("This is a string of {0} words and {0} sentences".format(12,2))
+This is a string of 12 words and 12 sentences
+>>> print ("This is a string of {} words and {} sentences".format(12,2))
+This is a string of 12 words and 2 sentences
+
+-> New format, include 'f' at the start of string, and it takes values from the variables.
+eg. >>> age = 20
+>>> name = 'Swaroop'
+>>> print(f'{name} was {age} years old when he wrote this book')
+Swaroop was 20 years old when he wrote this book
+
+-> Float precision
+{0:.3f} will print upto 3 decimal places
+eg. >>> print('{0:.3f}'.format(1.0/3))
+0.333
+
+-> Width of pattern
+{0:_^11} places text in center of 11 chars, other chars are _
+eg. >>> print('{0:_^11}'.format('hello'))
+___hello___
+
+-> % operator
+%d is for int
+%g -> float
+%s -> string
+
+-> Print by default adds a \n new line at the end, to avoid new-line and use space, or no, or new char.
+eg.
+...     print("This ",end="")
+...     print("is",end=" ")
+...     print("fancy",end=".")
+...     break
+...
+This is fancy.
+
+-> Multiple statements in same line by using semicolon
+i = 5; print(i);
+
+-> Multi line command
+>>> i = \
+... 5
+>>> i
+5

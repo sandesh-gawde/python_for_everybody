@@ -1,0 +1,42 @@
+Module
+
+-> Module is a set of functions and variables that can be used in other programs i.e. library
+Module needs to be imported before use, some are standard libraries packaged with Python so Python knows about them.
+Standard libraries can directly be imported.
+User defined libraries need to be written in .py format, should be in same director as the calling function and one of the paths show in sys.path.
+
+>>> import sys
+>>> print ("sys module path:", sys.path)
+sys module path: ['', 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\\python38.zip', 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\\DLLs', 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\\lib', 'C:\\Users\\Sandesh Gawde\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0', 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0', 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\\lib\\site-packages']
+
+Usage is module_name.module_parameter
+
+The path of this module is 1st blank, as it current directory, otherwise will look for module on following paths
+
+-> To import a specific variable of the module
+from sys import argv
+# argv can be used directly instead of sys.argv
+
+from math import *
+# All variables are imported from the module, and can be used independently, overhead of importing all variables.
+
+-> Module __name__
+Every module has a __name__ if it is main, it is functioning by itself, else it is imported in another module.
+Eg. (save as module_using_name.py ):
+
+if __name__ == '__main__':
+  print('This program is being run by itself')
+else:
+  print('I am being imported from another module')
+
+Output:
+$ python module_using_name.py
+This program is being run by itself
+$ python
+>>> import module_using_name
+I am being imported from another module
+
+-> Importing module from diff path.
+import sys
+sys.path.append('/foo/bar/my_module')
+import my_module

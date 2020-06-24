@@ -1,0 +1,6 @@
+try:
+  something
+except:
+  print ("Input was incorrect")\
+  raise.exception
+  exit ()

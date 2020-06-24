@@ -1,0 +1,59 @@
+#Classes for grouping together data, variables and functions
+#Data(variables+functions) - Attributes(fields+methods)
+
+Class creates the data type and object/instance is the use of that data type
+eg. int a # int is class and a is instance
+
+###########
+#eg.1
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> class First:
+...     pass
+...
+>>> one = First()
+>>> two = First()
+>>> one.value("1")                                    -> Can't add value, since value not defined in class
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'First' object has no attribute 'value'
+>>> one.value = 1                                     -> But value can be initated as a new attribute, just as .py program can have variable on fly
+>>> two.value = 2
+>>>
+>>> print (one)                                       -> Instance prints instance address in memory
+<__main__.First object at 0x000001752AE11AF0>
+>>> print (one.value)                                 -> Instance.attribute prints the value itslef.
+1
+#############
+
+Init method is where the Class begins to run the program.
+The parameters of the __init__ method need to be provided during initaition of the instance object.
+1st Parameter for the __init__ is self by default
+
+##############
+>>> class First:
+...     def __init__(self, name):                      -> Init takes instance name and variable string 'name'
+...             self.name = name                       -> name is instance.name
+...             print (self.name)
+...
+>>> one = First()                                      -> Needs the initial parameter value for 'name', just like func call
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: __init__() missing 1 required positional argument: 'name'
+>>> one = First("numbers")
+numbers
+>>> First.__init__(one,"numbers")                      -> In backend, its called in this syntax, self=instance name
+numbers
+>>>
+################
+
+Class variables vs Instance variable
+All variables either belong to class itself or instance
+Class variables are referred as class_name.variable and instance variables are referred as self.variable
+Class variable is avaialbe to all methods, if it changed by one instance it is changed for all.
+If x is class variable, and instance uses it as self.x, it just borrows it from class.
+If x in present in class and instance, then x in method changes self.x since that is more specific.
+
+We can print the elements key,value for instnace and class.
+print (inst_name.__dict__)
+print (class_name.__dict__)

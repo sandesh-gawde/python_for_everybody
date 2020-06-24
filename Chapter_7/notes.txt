@@ -1,0 +1,13 @@
+#Open files with file handler
+
+fhand = open("file_path","r/w/a")
+r - read (default when not specified)
+w - write (erases the content of the current file and writes)
+a - append (appends to the existing file)
+
+-> Reading file line by line
+fhand = open(file_path)
+for line in fhand:
+  line = line.rstrip()      #an additional \n that gets added, is stripped by rstrip.
+
+-> try and except to open file is good idea

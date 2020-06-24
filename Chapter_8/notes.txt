@@ -1,0 +1,25 @@
+#Lists is sequence that is mutable
+#List can have differnt data-type elements, list of list is fine too.
+#['spam', 2.0, 5, [10, 20]]
+
+>>> [0] * 3
+[0, 0, 0]
+
+List can be sliced.
+list_name[start_index:end_index]
+
+list_name.append(element)         #appends as an element to current list
+
+list_name.extend(other_list)      #merges other_list in list_name
+
+list_name.sort()                  #sorts list_name
+
+list_name.pop(index)              #returns pop index element and removes it from list
+
+del list_name[index]              #deletes element at the index
+
+list_name.remove("element")       #removes 1st occrance of element
+
+list_name.insert(index,element)   #inserts element before that index
+
+# List <-> String

@@ -1,0 +1,33 @@
+Variable names
+-> It can contain letters, numbers and underscores. It cannot start with number.
+-> It cannot contain special chars
+-> Lower case and upper case variables are different.
+
+Python reserves 35 keywords:
+and del from None True
+as elif global nonlocal try
+assert else if not while
+break except import or with
+class False in pass yield
+continue finally is raise async
+def for lambda return await
+
+-> any and all
+any will return true if any element in iteration is true
+all will return true if all elements in interation are true
+
+>>> x = [1,2,3]
+>>> print (all(0 for i in x))
+False
+>>> print (any(0 for i in x))
+False
+
+eg: S = input()
+print any([char.isalnum() for char in S])
+
+-> map
+maps a pattern to new type
+eg: input line has 2 nums, map them to two int
+m,n = map(int, input.split())
+INPUT: 7 21
+m=7, n=21

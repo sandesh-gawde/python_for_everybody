@@ -1,0 +1,112 @@
+#Functions
+#Reusable pieces of code
+
+-> Syntax
+#func defination
+def func_name(parameters):  #parameters are optional
+  statements
+  return                    #optional
+
+#function call
+func_name(parameters)
+
+-> Parameters
+def func_name(a,b):
+  statements
+  return (a+b)
+
+func_name(3,77)             #3 is assigned to a and 77 to b
+
+-> Local variables
+#variables inside the function are local, same name variable outside the func is independent
+>>> x = 12
+>>> def func_name(x):
+...     x += 5
+...     print (x)
+...
+>>> func_name(20)
+25
+>>> print (x)
+12
+
+-> Global variables
+#variables outside the function, can be used and modified inside the function using global
+>>> x
+12
+>>> def func_name():
+...     global x          #call the global variable
+...     x +=5
+...     print (x)
+...
+>>> func_name()
+17
+>>> print(x)              #x got changed to 17, by changes made in function
+17
+
+-> Default arguments
+#Some values in function can be set to default if not specified in caller
+>>> def func_name(x,y=1):
+...     x = x+y
+...     print (x)
+...
+>>> func_name(1)          #Second parameter is not specified, it takes default value of 1
+2
+>>> func_name(3,5)        #Second parameter is specified, it takes specific value
+8
+
+-> Keywords arguments
+We can choose to specify select variables, out-of-seq in the function.
+>>> def func_name(a=1,b=5,c=0):
+...     print("a is ",a,"b is ",b,"c is ",c)
+...
+>>> func_name(c=99,a=500)
+a is  500 b is  5 c is  99
+
+-> Variable Aruguments
+Arguments that can be of variable size
+>>> def func_name(a, *numbers, **diction):
+...     print ("a is ",a)
+...     for i in numbers:
+...             print ("i is ",i)
+...     for m,n in diction.items():
+...             print ("m,n ",m,n)
+...
+>>> func_name("Name", 1,2,3,4,5, name="SG", age=25)
+a is  Name
+i is  1
+i is  2
+i is  3
+i is  4
+i is  5
+m,n  name SG
+m,n  age 25
+# Here * collects 1d and ** collects 2d elements
+
+-> Return
+Return is optional in func, default return value is None
+When return is encountered, func is exited
+
+-> DocString is good for debugging and knowing the function.
+It follows a convention, and can be printed for a function, also can be used with func_name.__doc__ and help(func_name)
+>>> def func_name(x,y):
+...     """Doc string starts.
+...
+...     Start with cap letter, end with dot. First line doc string, 2nd blank, 3rd on explanation"""
+...     if x>y:
+...             return x
+...     if x<y:
+...             return y
+...     else:
+...             return "same"
+...
+>>> func_name(2,3)
+3
+>>> func_name.__doc__
+'Doc string starts.\n\t\n\tStart with cap letter, end with dot. First line doc string, 2nd blank, 3rd on explanation'
+>>> help(func_name)
+Help on function func_name in module __main__:
+
+func_name(x, y)
+    Doc string starts.
+
+    Start with cap letter, end with dot. First line doc string, 2nd blank, 3rd on explanation
