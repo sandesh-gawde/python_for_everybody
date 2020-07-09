@@ -1,1 +1,31 @@
+#sorting algo
+#bubble
+
+inp = [5,84,6,96,8,7]
+n = len(inp)-1
+
+for i in range(n,-1,-1):
+  for j in range(i):
+    if (inp[j+1])<(inp[j]):
+      inp[j+1],inp[j] = inp[j], inp[j+1]
+
+print(inp)
+
+#sorting algo
+#selection sort
+
+l = [6,13,5,2,81,3]
+n = len(l)
+
+for i in range(n):
+  smallest = l[i]
+  idx = i
+  for j in range(i+1,n):
+    if l[j]<smallest:
+      smallest=l[j]
+      idx = j
+  l[i], l[idx] = l[idx], l[i]
+
+print (l)
+
 
