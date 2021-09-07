@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #Class variables vs Object variables.
 #Class variables: Available to all methods of the class
 #Object variables: Unique to object, independent for each instance

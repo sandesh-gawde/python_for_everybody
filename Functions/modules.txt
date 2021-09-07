@@ -3,7 +3,7 @@ Module
 -> Module is a set of functions and variables that can be used in other programs i.e. library
 Module needs to be imported before use, some are standard libraries packaged with Python so Python knows about them.
 Standard libraries can directly be imported.
-User defined libraries need to be written in .py format, should be in same director as the calling function and one of the paths show in sys.path.
+User defined libraries need to be written in .py format, should be in same directory as the calling function and one of the paths show in sys.path.
 
 >>> import sys
 >>> print ("sys module path:", sys.path)

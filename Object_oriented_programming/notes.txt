@@ -1,7 +1,7 @@
 #Classes for grouping together data, variables and functions
 #Data(variables+functions) - Attributes(fields+methods)
 
-Class creates the data type and object/instance is the use of that data type
+Class creates the data type(template) and object/instance is the use of that data type
 eg. int a # int is class and a is instance
 
 ###########
@@ -57,3 +57,33 @@ If x in present in class and instance, then x in method changes self.x since tha
 We can print the elements key,value for instnace and class.
 print (inst_name.__dict__)
 print (class_name.__dict__)
+
+#======= Inheretence ========#
+1. Parent(Super) class and Child(sub) class.
+
+Child class inherets the features of the Parent class. All the methods of Parent class will be available to child class including __init__
+class Parent:
+    __init__(p)
+    feature_p1
+    method_p1
+    ...
+class Child(Parent):
+    __init__(c)
+    feature_c1
+    method_c1
+
+p_obj = Parent()        #Access to init(p), feature_p1, method_p1
+c_obj = Child()         #Access to init(c), init(p), feature_c1, feature_p1, method_c1, method_p1
+
+2. If Child class doesn't have __init__ it uses the Parent's init
+class Parent:
+    init(p)
+    feature_p1
+    method_p1
+
+class Child(Parent):
+    feature_c1
+    method_c1
+
+c_obj = Child()         #Uses the init of Parent
+
