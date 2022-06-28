@@ -54,6 +54,41 @@ Class variable is avaialbe to all methods, if it changed by one instance it is c
 If x is class variable, and instance uses it as self.x, it just borrows it from class.
 If x in present in class and instance, then x in method changes self.x since that is more specific.
 
+Class variables can be accessed in different ways:
+• self.all_allocated_ip
+• Network.all_allocated_ip
+• type(self).all_allocated_ip
+The self.all_allocated_ip option allows you to access the value of class variable or add an
+element if the class variable is a mutable data type. The disadvantage of this option is that if in
+the method you write self.all_allocated_ip = ..., instead of changing the class variable, an
+instance variable will be created.
+The option Network.all_allocated_ip will work correctly, but a small drawback this option is that
+the class name is written manually. You can use the third option type(self).all_allocated_ip
+instead, since type(self) returns a class.
+
+Eg:
+class Robot:
+    count = 0 
+    
+    def __init__(self,name):
+        self.name == name
+        print ("Hi %s"%self.name)
+        Robot.count += 1
+
+    @classmethod
+    def how_many(cls):
+        print ("The count is: %", %cls.count)
+
+    #OR can be used as instance method
+
+    def how_many(self):
+        print ("The count is: %", %Robot.count)
+
+r1 = Robot("Robo1")
+Robot.how_many()    #As cls mthd
+r1.how_many()       #As obj mthd
+
+
 We can print the elements key,value for instnace and class.
 print (inst_name.__dict__)
 print (class_name.__dict__)
