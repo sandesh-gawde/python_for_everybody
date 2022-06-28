@@ -74,6 +74,7 @@ class Robot:
         self.name == name
         print ("Hi %s"%self.name)
         Robot.count += 1
+        #Can also be called as: class.__self__.count += 1
 
     @classmethod
     def how_many(cls):
@@ -88,13 +89,25 @@ r1 = Robot("Robo1")
 Robot.how_many()    #As cls mthd
 r1.how_many()       #As obj mthd
 
+#==========Class Method and Decorators============#
+The how_many is actually a method that belongs to the class and not to the object. This means we can define it as either a classmethod or a staticmethod depending on whether we need to know which class we are part of. Since we refer to a class variable, let's use classmethod.
 
+We have marked the how_many method as a class method using a decorator.
+
+Decorators can be imagined to be a shortcut to calling a wrapper function (i.e. a function that "wraps" around another function so that it can do something before or after the inner function), so applying the @classmethod decorator is the same as calling:
+
+how_many = classmethod(how_many)
+
+#=======Underscore for names in class========#
+All class members are public. One exception: If you use data members with names using the double underscore prefix such as __privatevar, Python uses name-mangling to effectively make it a private variable.
+
+#========= To view variables for class or instance ===========#
 We can print the elements key,value for instnace and class.
 print (inst_name.__dict__)
 print (class_name.__dict__)
 
 #======= Inheretence ========#
-1. Parent(Super) class and Child(sub) class.
+1. Parent(Super or Base) class and Child(sub) class.
 
 Child class inherets the features of the Parent class. All the methods of Parent class will be available to child class including __init__
 class Parent:
@@ -122,3 +135,46 @@ class Child(Parent):
 
 c_obj = Child()         #Uses the init of Parent
 
+#========== Examples and explanation ==========#
+
+class School_Member:
+    
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+
+    def announce(self):
+        print ("Name and ID are: ", self.name, self.id)
+
+class School_Teacher(School_Member):
+
+    def __init__(self, name, id, dept):
+        School_Member.__init__(self,name,id)
+        #Can also be called as super().__init__(self,name,id)
+        self.dept = dept
+
+    def annouce(self):
+        School_Member.announce(self)
+        print ("The dept is: ", self.dept)
+
+class School_Student(School_Student):
+    
+    def __init__(self, name, id, div):
+        School_Member.__init__(slef, name, id)
+        self.div = div
+
+    def announce(self):
+        School_Member.announce(self)
+        print ("Division is: ", self.div)
+
+Yogini = School_Teacher("Yog",3122,"Chem")
+Ram = School_Student("Ram", 10221, "A")
+
+Yogini.announce()
+
+"""
+In this case, on calling the subclass, the init from subclass will be used, so we are explicity calling the init of the Super class to initiate.
+If the base class didn't have an init, then the init from the Superclass one level UP would be used.
+
+If the announce function was not defined in the base class, the one from one level up superclass would be used.
+"""
