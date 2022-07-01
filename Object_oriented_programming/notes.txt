@@ -178,3 +178,60 @@ If the base class didn't have an init, then the init from the Superclass one lev
 
 If the announce function was not defined in the base class, the one from one level up superclass would be used.
 """
+
+* To find if the Object is an instance of a Class:
+isinstance(instance_name, Class_name)
+
+isinstance(Yogini,School_Teacher)
+>>> True
+
+* To find if a class is a subclass of the base class:
+issubclass(child,parent)
+
+issubclass(School_Teacher, School_Member)
+>>> True
+
+issubclass(School_Member,School_Teacher)
+>>> False
+
+* Classes Multi-Inheritence:
+-> https://www.programiz.com/python-programming/multiple-inheritance
+====
+class A:
+    pass
+
+class B:
+    pass
+
+class P(A,B):
+    pass
+
+Here, the attributes for class A and B will be available to class P.
+(Method Order Resolution MRO) Order of preference will be from class P -> class A -> class B (Left to right). Object is the base class of all.
+
+To view MRO:
+Use <class_name>.mro() or use <class_name>.__mro__
+
+>>> MultiDerived.mro()
+[<class '__main__.MultiDerived'>,
+ <class '__main__.Base1'>,
+ <class '__main__.Base2'>,
+ <class 'object'>]
+
+* Multi level Inhertence:
+----
+class A:
+    pass
+
+class B(A):
+    pass
+
+class P(B):
+    pass
+
+Here, the attributes of both A and B will be available to P.
+
+
+
+
+
